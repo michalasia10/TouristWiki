@@ -6,6 +6,3 @@
 In general it's a school project.A tourist service based on microservices. The service will provide the user with knowledge about places of interest and
 possible attractions related to this place. The service will have a functionality allowing to update its resources using
 scraping or available API.
-
-
-
