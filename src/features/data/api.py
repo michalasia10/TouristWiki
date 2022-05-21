@@ -1,9 +1,24 @@
-import requests
+import overpass
 
-api_key = "5ae2e3f221c38a28845f05b65eae23667ad956ca2bd118e97d015aa2"
+# with open("./test.geo.json", mode="w") as f:
+#     geojson.dump(res, f)
 
-""" przykładowe połączenie do obiektu """
-response = requests.get("http://api.opentripmap.com/0.1/en/places/xid/Q372040?apikey="+api_key)
-print(response.json())
+"""zrobić funkcję: przyjmuje argument: kategoria, level, kraj
+ funkcja zwraca jsona (res), nie plik! """
 
 
+def osm_query(category: str, level: int, country: str):
+    api = overpass.API(timeout=500)
+
+    res = api.get("""
+    area["ISO3166-1"={country}][admin_level={level}];
+    (node["amenity"={category}](area);
+    rel["amenity"={category}](area);
+    );
+    out center;
+    """.format(category=category, level=level, country=country))
+
+    return res
+
+
+osm_query(category="restaurant", level=2, country=" PL")
