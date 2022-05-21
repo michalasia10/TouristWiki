@@ -4,8 +4,10 @@ from src.core.settings import CONNECTION_STRING, DEBUG
 
 client = MongoClient(CONNECTION_STRING)
 
-
-db: Database = client.production
+if DEBUG:
+    db:Database = client.develop
+else:
+    db: Database = client.production
 
 admin_collection: Collection = db.admin
 user_collection: Collection = db.user

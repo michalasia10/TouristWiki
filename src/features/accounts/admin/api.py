@@ -1,51 +1,28 @@
-from typing import List
-
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordBearer
-from passlib.context import CryptContext
 
-from src.core.crud import find_one_by_attr
 from src.core.database import admin_collection
-from src.features.accounts.admin.crud import create_admin_crud
-from src.features.accounts.admin.schema import Admin
-from src.features.accounts.common.auth import sign_jwt
-from src.features.accounts.common.schema import SignIn, User
-from src.features.accounts.common.schema import UserSinUp
+from src.core.settings import ADMIN_TOKEN
+from src.features.accounts.admin.schema import Admin, AdminSignIn, AdminSingUp
+from src.features.accounts.common.auth import JWTBearer
+from src.features.accounts.common.utils import login_accout, signup_account
 
 route = APIRouter(tags=['admin'], prefix='/admin')
-
-hash_helper = CryptContext(schemes=['bcrypt'])
 
 oauth2 = OAuth2PasswordBearer(tokenUrl="token")
 
 
-@route.post('/signup', response_model=User)
-def create_admin(user: UserSinUp):
-    admin_exist = find_one_by_attr(admin_collection, 'email', user.email)
-    if admin_exist:
-        raise HTTPException(
-            status_code=400,
-            detail="Admin already exist"
-        )
-    user.password = hash_helper.encrypt(user.password)
-    return create_admin_crud(user)
+@route.post('/signup', response_model=Admin)
+def create_admin(request: AdminSingUp):
+    # token=Depends(oauth2)):
+    return signup_account(request, 'admin')
 
 
 @route.post('/login')
-def admin_login(credentials: SignIn):
-    admin_exist = find_one_by_attr(admin_collection, 'email', credentials.username)
-    if admin_exist:
-        password = hash_helper.verify(
-            credentials.password, admin_exist.get('password')
-        )
-        if password:
-            return sign_jwt(credentials.username)
+def admin_login(request: AdminSignIn):
+    return login_accout(admin_collection, request, ADMIN_TOKEN)
 
-        raise HTTPException(
-            status_code=403,
-            detail="Incorrect email"
-        )
-    raise HTTPException(
-        status_code=403,
-        detail="Incorrect email or password"
-    )
+
+@route.get('/admin-staff', dependencies=[Depends(JWTBearer(credentials_type=ADMIN_TOKEN))])
+def admin_staff():
+    return {"mess": "good"}

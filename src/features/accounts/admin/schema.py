@@ -1,4 +1,13 @@
-from pydantic import BaseModel
+from src.features.accounts.common.schema import UserSignIn, UserSingUp, User
 
-class Admin(BaseModel):
-    username:str
+
+class Admin(User):
+    pass
+
+
+class AdminSignIn(UserSignIn):
+    pass
+
+
+class AdminSingUp(UserSingUp):
+    pass
