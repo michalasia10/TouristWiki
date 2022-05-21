@@ -1,10 +1,13 @@
-from pydantic import BaseModel, EmailStr
+from src.features.accounts.common.schema import User, UserSingUp, UserSignIn
 
 
-class User(BaseModel):
-    user: str
-    pwd: str
+class NormalUser(User):
+    pass
 
 
-class UserSinUp(User):
-    email: EmailStr
+class NormalUserSinUp(UserSingUp):
+    pass
+
+
+class NormalUserSignIn(UserSignIn):
+    pass

@@ -1,10 +1,9 @@
-from fastapi.security import HTTPBasicCredentials
-
 from pydantic import BaseModel, EmailStr
 
 
-class SignIn(HTTPBasicCredentials):
-    pass
+class UserSignIn(BaseModel):
+    email: EmailStr
+    password: str
 
 
 class User(BaseModel):
@@ -12,5 +11,5 @@ class User(BaseModel):
     password: str
 
 
-class UserSinUp(User):
+class UserSingUp(User):
     email: EmailStr
