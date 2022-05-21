@@ -5,7 +5,7 @@ from main_app.src.core.settings import CONNECTION_STRING, DEBUG
 client = MongoClient(CONNECTION_STRING)
 
 if DEBUG:
-    db:Database = client.develop
+    db: Database = client.develop
 else:
     db: Database = client.production
 
