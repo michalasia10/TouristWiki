@@ -13,8 +13,8 @@ templates = Jinja2Templates(directory='mail_app/src/templates/')
 
 @router.post('/send-welcome-mail')
 async def send_email(email: WelcomeMail):
-    serializer:dict = jsonable_encoder(email)
-    body_args:dict = serializer.get("body_args")
+    serializer: dict = jsonable_encoder(email)
+    body_args: dict = serializer.get("body_args")
 
     context = {"request": ""}
     context.update(body_args)

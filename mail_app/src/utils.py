@@ -1,6 +1,5 @@
 import smtplib
 from email.mime.text import MIMEText
-from email.mime.application import MIMEApplication
 from typing import List
 
 from pydantic import EmailStr
@@ -8,7 +7,7 @@ from pydantic import EmailStr
 from mail_app.src.settings import MAIL_SENDER, MAIL_PASSWORD, MAIL_SERVER, MAIL_PORT
 
 
-async def send_email(receivers: List[EmailStr], subject, html_body,**kwargs):
+async def send_email(receivers: List[EmailStr], subject, html_body, **kwargs):
     receivers = ', '.join(receivers)
     sm = smtplib.SMTP(MAIL_SERVER, MAIL_PORT)
     sm.ehlo()

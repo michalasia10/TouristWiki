@@ -1,9 +1,8 @@
 import os
 
 from dotenv import load_dotenv, find_dotenv
-from fastapi_mail import ConnectionConfig
-load_dotenv(find_dotenv())
 
+load_dotenv(find_dotenv())
 
 APP_NAME = "TouristWikiMailService"
 SERVER_ADDRESS = os.environ.get("MAIL_APP_HOST")
