@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordBearer
 
-from src.core.database import admin_collection
-from src.core.settings import ADMIN_TOKEN
-from src.features.accounts.admin.schema import Admin, AdminSignIn, AdminSingUp
-from src.features.accounts.common.auth import JWTBearer
-from src.features.accounts.common.utils import login_accout, signup_account
+from main_app.src.core.database import admin_collection
+from main_app.src.core.settings import ADMIN_TOKEN
+from main_app.src.features.accounts.admin.schema import Admin, AdminSignIn, AdminSingUp
+from main_app.src.features.accounts.common.auth import JWTBearer
+from main_app.src.features.accounts.common.utils import login_accout, signup_account
 
 route = APIRouter(tags=['admin'], prefix='/admin')
 

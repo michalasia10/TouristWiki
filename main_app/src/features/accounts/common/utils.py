@@ -1,11 +1,11 @@
 from fastapi import HTTPException
 from passlib.context import CryptContext
 
-from src.core.crud import find_one_by_attr
-from src.core.database import admin_collection, user_collection
-from src.features.accounts.admin.crud import create_admin_crud
-from src.features.accounts.common.auth import sign_jwt
-from src.features.accounts.user.crud import create_user_crud
+from main_app.src.core.crud import find_one_by_attr
+from main_app.src.core.database import admin_collection, user_collection
+from main_app.src.features.accounts.admin.crud import create_admin_crud
+from main_app.src.features.accounts.common.auth import sign_jwt
+from main_app.src.features.accounts.user.crud import create_user_crud
 
 hash_helper = CryptContext(schemes=['bcrypt'])
 

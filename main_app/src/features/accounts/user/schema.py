@@ -1,4 +1,4 @@
-from src.features.accounts.common.schema import User, UserSingUp, UserSignIn
+from main_app.src.features.accounts.common.schema import User, UserSingUp, UserSignIn
 
 
 class NormalUser(User):
