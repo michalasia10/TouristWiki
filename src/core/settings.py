@@ -11,3 +11,11 @@ APP_NAME = "TouristWiki"
 SERVER_ADDRESS = "0.0.0.0"
 SERVER_PORT = 8080
 DEBUG = int(os.environ.get("DEBUG"))
+
+ADMIN_TOKEN = os.environ.get("ADMIN_TOKEN")
+USER_TOKEN = os.environ.get("USER_TOKEN")
+
+CREDENTIALS = {
+    ADMIN_TOKEN:[ADMIN_TOKEN,USER_TOKEN],
+    USER_TOKEN:[USER_TOKEN]
+}
