@@ -1,7 +1,7 @@
 import overpass
 
-# with open("./test.geo.json", mode="w") as f:
-#     geojson.dump(res, f)
+from src.core.database import client
+from src.core.settings import CONNECTION_STRING
 
 """zrobić funkcję: przyjmuje argument: kategoria, level, kraj
  funkcja zwraca jsona (res), nie plik! """
@@ -22,3 +22,12 @@ def osm_query(category: str, level: int, country: str):
 
 
 osm_query(category="restaurant", level=2, country=" PL")
+osm_query(category="castle", level=2, country=" PL")
+
+
+def data_to_db():
+    client()
+    db = client.get_database("TouristWiki")
+
+
+    return
