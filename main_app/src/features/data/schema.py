@@ -16,6 +16,8 @@ class KeysEnum(str, Enum):
 class AmenityEnum(str, Enum):
     ZIP_LINE = 'zip_line'
     RESTAURANT = 'restaurant'
+    BAR = 'bar'
+
 
 
 class OSMQuery(BaseModel):
