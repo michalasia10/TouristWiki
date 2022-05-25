@@ -19,3 +19,6 @@ CREDENTIALS = {
     ADMIN_TOKEN: [ADMIN_TOKEN, USER_TOKEN],
     USER_TOKEN: [USER_TOKEN]
 }
+
+OSM_KEYS = ['amenity']
+OSM_VALUES = ["restaurant","casino"]

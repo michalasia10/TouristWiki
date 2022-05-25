@@ -11,3 +11,4 @@ else:
 
 admin_collection: Collection = db.admin
 user_collection: Collection = db.user
+word_objects_collection: Collection = db.word_objects
