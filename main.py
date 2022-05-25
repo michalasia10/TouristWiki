@@ -1,5 +1,7 @@
 if __name__ == '__main__':
-    from src.core.server import run
-    run()
+    from main_app.src.core.server import run as main_app
+    from mail_app.src.server import run as mail_app
+    mail_app()
+    main_app()
 
 

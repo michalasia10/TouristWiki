@@ -1,7 +1,7 @@
 from bson import ObjectId
 from pymongo.collection import Collection
 
-from src.core.database import db
+from main_app.src.core.database import db
 
 def get_all(collection:Collection):
     return collection.find()

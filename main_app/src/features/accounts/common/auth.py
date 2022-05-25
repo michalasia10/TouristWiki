@@ -6,7 +6,7 @@ from fastapi import Request, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import EmailStr
 
-from src.core.settings import CREDENTIALS
+from main_app.src.core.settings import CREDENTIALS
 
 
 def token_response(token: str):
