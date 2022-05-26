@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 from pymongo.database import Database, Collection
-from src.core.settings import CONNECTION_STRING, DEBUG
+from main_app.src.core.settings import CONNECTION_STRING, DEBUG
 
 client = MongoClient(CONNECTION_STRING)
 
@@ -11,3 +11,4 @@ else:
 
 admin_collection: Collection = db.admin
 user_collection: Collection = db.user
+word_objects_collection: Collection = db.word_objects

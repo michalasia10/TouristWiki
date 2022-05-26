@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 
-from src.core.database import user_collection
-from src.core.settings import USER_TOKEN
-from src.features.accounts.common.utils import login_accout, signup_account
-from src.features.accounts.user.schema import NormalUser, NormalUserSignIn, NormalUserSinUp
+from main_app.src.core.database import user_collection
+from main_app.src.core.settings import USER_TOKEN
+from main_app.src.features.accounts.common.utils import login_accout, signup_account
+from main_app.src.features.accounts.user.schema import NormalUser, NormalUserSignIn, NormalUserSinUp
 
 route = APIRouter(tags=['user'], prefix='/user')
 
